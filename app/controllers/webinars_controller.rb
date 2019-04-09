@@ -1,5 +1,6 @@
 class WebinarsController < ApplicationController
   def index
+    @webinars = Webinar.all
   end
 
   def new
