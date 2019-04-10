@@ -4,6 +4,7 @@ class WebinarsController < ApplicationController
   end
 
   def new
+    @webinar = Webinar.new
   end
 
   def create

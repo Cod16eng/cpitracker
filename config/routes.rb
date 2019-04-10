@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'webinars#index'
-
+  
   get 'webinars/new'
 
   get 'webinars/create'
