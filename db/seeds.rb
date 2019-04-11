@@ -8,3 +8,7 @@
 
 
 User.create(email: 'codrin@ascheri.co.uk', password: 'password', password_confirmation: 'password')
+
+Webinar.create(name: '', relatore: '', programma: '', date: '')
+
+Participant.create(first_name: '', last_name: '', email: '', qualification: '', city: '')
