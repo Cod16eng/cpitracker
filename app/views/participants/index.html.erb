@@ -1,0 +1,27 @@
+<h1 align="center">Participants</h1>
+
+<div align="center" >
+  <%= will_paginate @participant, renderer: BootstrapPagination::Rails %>
+</div>
+
+<div class="row">	
+	<div class="col-md-8 col-md-offset-2">
+		<% @participants.each do |participant| %>
+		  <div align="center" class="well">
+			<h3 align="center"><%= participant.qualification %> <%= participant.first_name %> <%= participant.last_name %></h3>
+				<ul class="list-group">										
+					<li  class="list-group-item">Email: <%= mail_to participant.email %> - City: <%= participant.city %></li>
+					<li class="list-group-item"><%= link_to "View this Participant", participant_path(participant), class: "btn btn-xs btn-success" %></li>			
+				</ul>
+			<div align="center"><br>			
+						
+			</div>
+		  </div>
+		<% end %>
+	</div>
+</div>
+
+<div align="center" >
+  <%= will_paginate @participant, renderer: BootstrapPagination::Rails %>
+</div>
+

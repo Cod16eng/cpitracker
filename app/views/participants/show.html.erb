@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="well">
+			<h1 align="center"><%=  @participant.first_name %> <%= @participant.last_name %></h1>
+				<ul class="list-group">					
+					<li class="list-group-item">Title: <%= @participant.qualification %></li>
+					<li class="list-group-item">Email: <%= mail_to @participant.email %></li>
+					<li class="list-group-item">City: <%= @participant.city %></li>		
+				</ul>
+				<% if @participant.webinars.any? %>
+		         <p>Webinars: <%= render @participant.webinars %></p>
+		        <% end %>
+				
+			<div align="center"><br>
+			<%= link_to "Edit this participant", edit_participant_path(@participant), class: "btn btn-xs btn-success" %>
+			<%= link_to "Delete this participant", participant_path(@participant), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>
+			<%= link_to "Back to participants", participants_path, class: "btn btn-xs btn-primary" %>
+			</div>
+		</div>
+	</div>
+</div>

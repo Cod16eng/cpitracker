@@ -2,7 +2,7 @@ class WebinarsController < ApplicationController
   before_action :set_webinar, only: [:edit, :show, :update, :destroy]
 
   def index
-    @webinars = Webinar.all
+    @webinars = Webinar.paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   def new

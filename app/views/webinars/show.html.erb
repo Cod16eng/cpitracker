@@ -1,50 +1,21 @@
-<h1> Webinar <%= @webinar.name %></h1>
 
-<%= render "shared/errors", obj: @webinar %>
-
-<%= form_for(@webinar, html: {class:"form-horizontal", role: "form"}) do |f| %>
-<div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :name %>
-    </div>
-    <div class="col-sm-8">
-	  <%= f.text_field :name, class: "form-control", placeholder: "Enter webinar name", autofocus: true %>
-    </div>
-</div>
-<div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :relatore %>
-    </div>
-    <div class="col-sm-8">
-	  <%= f.text_field :relatore, class: "form-control", placeholder: "Enter relatore name", autofocus: true %>
-    </div>
-</div>
-<div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :programa %>
-    </div>
-    <div class="col-sm-8">
-	  <%= f.text_area :programa, class: "form-control", size: "60x12" %>
-    </div>
-</div>
-<div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :date %>
-    </div>
-    <div class="col-sm-8">
-	  <%= f.date_field :date, class: "form-control" %>
-    </div>
-</div>
-
-
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-8">
-  <%= f.submit class: 'btn btn-primary btn-lg' %>
-</div>
-</div>
-  
-<% end %>
-
-<div class="col-xs-12" align="center">
-[ <%= link_to  "Cancel and return to All Webinars ", root_path%> ]
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="well">
+			<h1 align="center"><%= @webinar.name %></h1>
+				<ul class="list-group">					
+					<li class="list-group-item">Date: <%= @webinar.date %></li>
+					<li class="list-group-item">Relatore: <%= @webinar.relatore %></li>
+					<li class="list-group-item">Programa: <%= @webinar.programa %></li>		
+				</ul>
+			<div align="center"><br>
+			<%= link_to "Edit this Webinar", edit_webinar_path(@webinar), class: "btn btn-xs btn-success" %>
+			<%= link_to "Delete this Webinar", webinar_path(@webinar), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>
+			<%= link_to "Back to Webinars", webinars_path, class: "btn btn-xs btn-primary" %>
+			</div>
+			<% if @webinar.participants.any? %>
+		         <p>Participants: <%= render @webinar.participants %></p>
+		        <% end %>
+		</div>
+	</div>
 </div>
