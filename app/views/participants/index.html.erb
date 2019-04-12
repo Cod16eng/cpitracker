@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">	
-	<div class="col-md-8">
+	<div class="col-md-8 col-md-offset-2">
 		<% @participants.each do |participant| %>
 		  <div align="center" class="well">
 			<h3 align="center"><%= participant.qualification %> <%= participant.first_name %> <%= participant.last_name %></h3>
@@ -19,19 +19,7 @@
 		  </div>
 		<% end %>
 	</div>
-	<div class="col-md-4">		
-		<h3 align="center">Import Participants</h3><br>
-		<%= form_tag import_participants_path, multipart: true  do %>
-		<span class="btn btn-xs btn-warning btn-file">
-           Choose File
-             <%= file_field_tag :file %>
-        </span><br><br>
-		
-		<%= submit_tag "Upload participants",class: 'btn btn-xs btn-success' %>
-		<% end %>
-		
-		
-	</div>
+	
 </div>
 
 <div align="center" >
