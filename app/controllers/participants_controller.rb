@@ -40,12 +40,18 @@ class ParticipantsController < ApplicationController
     redirect_to participants_path
   end
 
+  def import
+    Participant.import(params[:file])
+    flash[:success] = "Participants added via import"
+    redirect_to participants_path
+  end
+
   private
   def set_participant
     @participant =  Participant.find(params[:id])
   end
 
   def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :email, :qualification, :city, webinar_ids: [])
+    params.require(:participant).permit(:first_name, :last_name, :email, :qualification, :city, :file, webinar_ids: [])
   end
 end

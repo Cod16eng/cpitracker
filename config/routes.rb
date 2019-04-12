@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   
   
   resources :webinars
-  resources :participants
-  
+  resources :participants do
+  	collection { post :import }
+  end
 
   devise_for :users
 
