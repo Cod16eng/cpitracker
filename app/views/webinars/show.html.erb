@@ -12,9 +12,10 @@
 			<%= link_to "Edit this Webinar", edit_webinar_path(@webinar), class: "btn btn-xs btn-success" %>
 			<%= link_to "Delete this Webinar", webinar_path(@webinar), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>
 			<%= link_to "Back to Webinars", webinars_path, class: "btn btn-xs btn-primary" %>
-			</div>
+			</div><br>
 			<% if @webinar.participants.any? %>
-		         <p>Participants: <%= render @webinar.participants %></p>
+			<p style="float: right"><span class="label label-info"><%= pluralize(@webinar.participants.count, "participant")  %></p>
+		         <p>Participants:  <%= render @webinar.participants %></p>
 		        <% end %>
 		</div>
 	</div>

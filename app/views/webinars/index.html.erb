@@ -1,4 +1,4 @@
-<h1 align="center">Webinars</h1>
+<h1 align="center">Webinars <span class="badge badge-default"><%= pluralize(@webinars.count, "webinar")  %></h1>
 
 <div align="center" >
   <%= will_paginate @webinar, renderer: BootstrapPagination::Rails %>

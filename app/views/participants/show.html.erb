@@ -8,6 +8,7 @@
 					<li class="list-group-item">City: <%= @participant.city %></li>		
 				</ul>
 				<% if @participant.webinars.any? %>
+				<p style="float: right"><span class="label label-info" ><%= pluralize(@participant.webinars.count, "webinar")  %></p>
 		         <p>Webinars: <%= render @participant.webinars %></p>
 		        <% end %>
 				

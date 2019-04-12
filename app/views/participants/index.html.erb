@@ -1,4 +1,4 @@
-<h1 align="center">Participants</h1>
+<h1 align="center">Participants <span class="badge badge-default"><%= pluralize(@participants.count, "participant")  %></span></h1><br>
 
 <div align="center" >
   <%= will_paginate @participant, renderer: BootstrapPagination::Rails %>
@@ -29,6 +29,7 @@
 		
 		<%= submit_tag "Upload participants",class: 'btn btn-xs btn-success' %>
 		<% end %>
+		
 		
 	</div>
 </div>
