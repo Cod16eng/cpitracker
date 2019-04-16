@@ -32,6 +32,7 @@ class WebinarsController < ApplicationController
   end
 
   def show
+    @speaker = Speaker.find(params[:id])
   end
 
   def destroy

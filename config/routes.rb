@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
+    
   root 'webinars#index'  
   
-  
+  resources :speakers
   resources :webinars
   resources :participants do
   	collection { post :import }

@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="well">
+			<h1 align="center"><%=  @speaker.first_name %> <%= @speaker.last_name %></h1>
+				<ul class="list-group">					
+					<li class="list-group-item">Title: <%= @speaker.qualification %></li>
+					<li class="list-group-item">Email: <%= mail_to @speaker.email %></li>
+					<li class="list-group-item">City: <%= @speaker.city %></li>		
+				</ul>
+				<% if @speaker.webinars.any? %>
+				<p style="float: right"><span class="label label-info" ><%= pluralize(@speaker.webinars.count, "webinar")  %></p>
+		         <p>Webinars: <%= render @speaker.webinars %></p>
+		        <% end %>
+				
+			<div align="center"><br>
+			<%= link_to "Edit this speaker", edit_speaker_path(@speaker), class: "btn btn-xs btn-success" %>
+			<%= link_to "Delete this speaker", speaker_path(@speaker), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>
+			<%= link_to "Back to speakers", speakers_path, class: "btn btn-xs btn-primary" %>
+			</div>
+		</div>
+	</div>
+</div>
+

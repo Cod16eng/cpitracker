@@ -1,3 +1,13 @@
+<script type="text/javascript">
+$(document).ready(function(){ 
+    $("#myTab li:eq(1) a").tab('show');
+});
+</script>
+<style type="text/css">
+	.bs-example{
+		margin: 20px;
+	}
+</style>
 
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
@@ -5,7 +15,8 @@
 			<h1 align="center"><%= @webinar.name %></h1>
 				<ul class="list-group">					
 					<li class="list-group-item">Date: <%= @webinar.date %></li>
-					<li class="list-group-item">Relatore: <%= @webinar.relatore %></li>
+					<li class="list-group-item">Relatore: <%= render "speakers/speaker"
+					 %></li>
 					<li class="list-group-item">Programma: <%= @webinar.programa %></li>		
 				</ul>
 			<div align="center"><br>
@@ -13,10 +24,34 @@
 			<%= link_to "Delete this Webinar", webinar_path(@webinar), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>
 			<%= link_to "Back to Webinars", webinars_path, class: "btn btn-xs btn-primary" %>
 			</div><br>
-			<% if @webinar.participants.any? %>
-			<p style="float: right"><span class="label label-info"><%= pluralize(@webinar.participants.count, "participant")  %></p>
-		         <p>Participants:  <%= render @webinar.participants %></p>
-		        <% end %>
+			<ul class="nav nav-tabs nav-justified" id="myTab">
+			  <li role="presentation"><a data-toggle="tab" href="#allParticipants">All Participants</a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#connected">Connected</a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#notConnected">Not connected</a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#ascheriP">Ascheri & Partners</a></li>
+			</ul>
+			<div class="tab-content">
+        	  <div id="allParticipants" class="tab-pane fade in active"><br>
+	            <% if @webinar.participants.any? %>
+				<p style="float: right"><span class="label label-info"><%= pluralize(@webinar.participants.count, "participant")  %></span></p><br>
+			         <p><%= render @webinar.participants %></p>
+			        <% end %>
+	          </div>
+	          <div id="connected" class="tab-pane fade in active">
+	            
+				
+			         <%= render "participants/connected"  %>
+			        
+	          </div>
+	          <div id="notConnected" class="tab-pane fade in active">
+	            <%= render "participants/notconnected"  %>
+	          </div>
+	          <div id="ascheriP" class="tab-pane fade in active">
+	            <%= render "participants/ascherip"  %>
+	          </div>
+	       </div>
+
+			
 		</div>
 	</div>
 </div>

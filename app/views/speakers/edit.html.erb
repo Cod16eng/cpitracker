@@ -1,8 +1,8 @@
-<h1 align="center">Edit Participant</h1>
+<h1 align="center">New Relatore</h1>
 
-<%= render "shared/errors", obj: @participant %>
+<%= render "shared/errors", obj: @speaker %>
 
-<%= form_for(@participant, html: {class:"form-horizontal", role: "form"}) do |f| %>
+<%= form_for(@speaker, html: {class:"form-horizontal", role: "form"}) do |f| %>
 <div class="form-group">
 	<div class="control-label col-sm-2">	 
 	  <%= f.label :first_name %>
@@ -44,29 +44,6 @@
     </div>
 </div>
 <div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :connected %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :connected, class: "checkbox" %>
-    </div>
-
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :not_connected %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :notconnected, class: "checkbox" %>
-    </div>
-
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :Ascheri %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :ascherip, class: "checkbox" %>
-    </div>
-</div>
-<hr>
-<div class="form-group">
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
 			<%= f.collection_check_boxes :webinar_ids, Webinar.all, :id, :name do |cb| %>
@@ -84,8 +61,6 @@
 </div>
   
 <% end %>
-
 <div class="col-xs-12" align="center">
-[ <%= link_to  "Cancel and return to All Participant ", participants_path%> ]
+[ <%= link_to  "Cancel and return to All Participant ", speakers_path %> ]
 </div>
-
