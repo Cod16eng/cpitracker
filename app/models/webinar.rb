@@ -7,7 +7,7 @@ class Webinar < ApplicationRecord
 	has_many :speakers, through: :speaker_webinars
 
 	validates :name, presence: true, length: {minimum: 3, maximum: 100}
-	validates :relatore, presence: true, length: {minimum: 5, maximum: 100}
+	validates :speaker_ids, presence: true
 	validates :date, presence: true
 	validates :programa, presence: true
 end

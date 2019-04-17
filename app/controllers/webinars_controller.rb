@@ -48,7 +48,7 @@ class WebinarsController < ApplicationController
   end
 
   def webinar_params
-    params.require(:webinar).permit(:name, :relatore, :date, :programa)
+    params.require(:webinar).permit(:name, :date, :programa, speaker_ids: [])
   end
 end
 

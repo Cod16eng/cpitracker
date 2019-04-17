@@ -44,28 +44,7 @@
     </div>
 </div>
 
-<div class="form-group">
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :conected %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :yes, class: "checkbox" %>
-    </div>
 
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :not_conected %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :no, class: "checkbox" %>
-    </div>
-
-	<div class="control-label col-sm-2">	 
-	  <%= f.label :Ascheri %>
-    </div>
-    <div class="col-sm-2">
-	  <%= f.check_box :no, class: "checkbox" %>
-    </div>
-</div>
 <hr>
 <div class="form-group">
 	<div class="row">
@@ -85,6 +64,9 @@
 </div>
   
 <% end %>
+
+
+
 <div class="col-xs-12" align="center">
 [ <%= link_to  "Cancel and return to All Participant ", participants_path%> ]
 </div>
@@ -98,7 +80,7 @@
         </span><br><br>
 		
 		<%= submit_tag "Upload participants",class: 'btn btn-xs btn-success' %>
-		<% end %><br		
+		<% end %><br>		
 		
 </div>
 <hr>

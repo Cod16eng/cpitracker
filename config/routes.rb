@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :speakers
   resources :webinars
+  resources :participantwebinars
   resources :participants do
   	collection { post :import }
   end

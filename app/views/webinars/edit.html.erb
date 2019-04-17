@@ -11,11 +11,15 @@
     </div>
 </div>
 <div class="form-group">
-    <div class="control-label col-sm-2">
-        <%= f.label :relatore %>
-    </div>
-    <div class="col-sm-8">
-        <%= f.collection_select :speaker_ids, Speaker.all, :id, :full_name, { prompt: "Select Relatore"}, class: "form-control" %>            
+    
+    <div class="control-label col-sm-2">     
+      <%= f.label :relatore %>
+    </div>    
+        <div class="col-sm-8"> 
+          <%= f.collection_check_boxes :speaker_ids, Speaker.all, :id, :full_name do |cb| %>
+            <% cb.label(class: "checkbox input_checkbox col-sm-4") {cb.check_box(class: "checkbox") + cb.text} %>
+            <% end %>
+        
     </div>
 </div>
 <div class="form-group">
