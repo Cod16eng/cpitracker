@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $(document).ready(function(){ 
-    $("#myTab li:eq(1) a").tab('show');
+    $("#myTab li:eq(0) a").tab('show');
 });
 </script>
 <style type="text/css">
@@ -15,8 +15,9 @@ $(document).ready(function(){
 			<h1 align="center"><%= @webinar.name %></h1>
 				<ul class="list-group">					
 					<li class="list-group-item">Date: <%= @webinar.date %></li>
-					<li class="list-group-item">Relatore: <%= render "speakers/speaker"
-					 %></li>
+					<% if @webinar.speakers.any? %>
+						<li  class="list-group-item"><%= render @webinar.speakers %></li>
+					<% end %>
 					<li class="list-group-item">Programma: <%= @webinar.programa %></li>		
 				</ul>
 			<div align="center"><br>

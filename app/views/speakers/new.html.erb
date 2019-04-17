@@ -43,15 +43,7 @@
 	  <%= f.text_field :city, class: "form-control" %>
     </div>
 </div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2">
-			<%= f.collection_check_boxes :webinar_ids, Webinar.all, :id, :name do |cb| %>
-			<% cb.label(class: "checkbox input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-			<% end %>
-		</div>
-	</div>
-</div>
+
 
 
 <div class="form-group">
