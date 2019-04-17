@@ -39,10 +39,7 @@ $(document).ready(function(){
 			        <% end %>
 	          </div>
 	          <div id="connected" class="tab-pane fade in active">
-	          	<% if @webinar.participants.connected? %>
-				<p style="float: right"><span class="label label-info"><%= pluralize(@webinar.participants.count, "participant")  %></span></p><br>
-			         <p><%= render "participants/connected" %></p>
-			        <% end %>
+	          	
 	            
 				
 			         
