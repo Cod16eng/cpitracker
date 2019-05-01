@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190417101649) do
+ActiveRecord::Schema.define(version: 20190426143008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 20190417101649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "connected", default: false
-    t.boolean "notconnected", default: false
-    t.boolean "ascherip", default: false
   end
 
   create_table "participants", force: :cascade do |t|
@@ -33,6 +31,7 @@ ActiveRecord::Schema.define(version: 20190417101649) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "ascherip", default: false
   end
 
   create_table "speaker_webinars", force: :cascade do |t|

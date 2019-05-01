@@ -1,9 +1,13 @@
 class Webinar < ApplicationRecord
 
 	has_many :participant_webinars
-	has_many :participants, through: :participant_webinars
-
-	has_many :speaker_webinars
+	has_many :participants, through: :participant_webinars  do
+    def ascherip
+      where('participant.ascherip = ?', true)
+    end
+  end  
+    
+    has_many :speaker_webinars
 	has_many :speakers, through: :speaker_webinars
 
 	validates :name, presence: true, length: {minimum: 3, maximum: 100}

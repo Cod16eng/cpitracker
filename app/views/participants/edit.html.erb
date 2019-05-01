@@ -43,9 +43,16 @@
 	  <%= f.text_field :city, class: "form-control" %>
     </div>
 </div>
+<div class="form-group">
+	<div class="control-label col-sm-2">	 
+	  <%= f.label :ascherip, 'Ascheri & Partners', class: "input_checkbox" %>
+    </div>
+    <div class="col-sm-8">
+	  <%= f.check_box :ascherip, class: "checkbox" %>
+    </div>
+</div>
 
-
-<hr>
+ <hr>
 <div class="form-group">
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
@@ -55,8 +62,18 @@
 		</div>
 	</div>
 </div>
-
-
+<% if @participant.webinars.any? %>
+<div class="form-group">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-0">  
+		  <%= f.fields_for :participant_webinars do |d| %>
+		  <%= d.hidden_field :participant_id, value: @participant.id %>
+		  <li class="list-group-item"> <%= render 'participants/participantconnected', d: d %></li>
+		  <% end %>
+		</div>
+	</div>
+</div>
+  <% end %>
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-8">
   <%= f.submit class: 'btn btn-primary btn-lg' %>

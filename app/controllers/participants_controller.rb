@@ -2,16 +2,19 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:edit, :show, :update, :destroy]
 
   def index
+    
     @participants = Participant.paginate(page: params[:page], per_page: 10).order('last_name ASC')
 
   end
 
   def new
     @participant = Participant.new
+        
   end
 
-  def create
-    @participant =  Participant.new(participant_params)
+  def create    
+    @participant =  Participant.new(participant_params)    
+    
     if @participant.save
       flash[:success] = "Participant created"
       redirect_to participant_path(@participant)
@@ -21,10 +24,15 @@ class ParticipantsController < ApplicationController
   end
 
   def edit
+    
+    
   end
 
   def update
-    if @participant.update(participant_params)
+   
+    
+    if @participant.update_attributes(participant_params)
+      
       flash[:success] = "Participant Updated"
       redirect_to participant_path(@participant)
     else
@@ -53,6 +61,7 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :email, :qualification, :city, :file, :connected, :notconnected, :ascherip, webinar_ids: [])
+    params.require(:participant).permit(:first_name, :last_name, 
+      :email, :qualification, :city, :ascherip, :file, webinar_ids: [], participant_webinars_attributes: [:id, :connected, :_destroy])
   end
 end

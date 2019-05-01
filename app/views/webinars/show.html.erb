@@ -39,19 +39,21 @@ $(document).ready(function(){
 			        <% end %>
 	          </div>
 	          <div id="connected" class="tab-pane fade in active">
-	          	
-	            
-				
-			         
-			        
+	          	<% if @webinar.participants.any? %>
+			        <p><%= render 'participants/connected' %></p>
+			    <% end %>
 	          </div>
 	          <div id="notConnected" class="tab-pane fade in active">
-	            
+	            <% if @webinar.participants.any? %>				
+			        <p><%= render 'participants/notconnected' %></p>
+			    <% end %>
 	          </div>
-	          <div id="ascheriP" class="tab-pane fade in active">
-	            
+	          <div id="ascheriP" class="tab-pane fade in active"><br>
+	            <% if @webinar.participants.ascherip %>      
+                  <p><%= render 'participants/ascherip' %></p>
+                <% end %>
 	          </div>
-	       </div>
+	        </div>
 
 			
 		</div>
