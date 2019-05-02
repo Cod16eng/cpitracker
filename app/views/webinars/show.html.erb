@@ -49,7 +49,7 @@ $(document).ready(function(){
 			    <% end %>
 	          </div>
 	          <div id="ascheriP" class="tab-pane fade in active"><br>
-	            <% if @webinar.participants.ascherip %>      
+	            <% if @webinar.participants.connected.any? %>      
                   <p><%= render 'participants/ascherip' %></p>
                 <% end %>
 	          </div>

@@ -1,4 +1,3 @@
-
-  <% Participant.where(ascherip: true).find_each do |participant| %>
-  <li class="list-group-item"><%= link_to "#{participant.first_name} #{participant.last_name} - #{participant.city}", participant_path(participant) %> &nbsp;</li>
+  <% ParticipantWebinar.where(connected: true, webinar_id: @webinar).joins(:participant).where("participants.ascherip" => true).each do |pw| %>
+  <li class="list-group-item"><%= link_to "#{pw.participant.first_name} #{pw.participant.last_name} - #{pw.participant.city}", participant_path(pw.participant) %> &nbsp;</li>
 <% end %>

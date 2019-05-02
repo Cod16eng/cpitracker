@@ -62,13 +62,14 @@
 		</div>
 	</div>
 </div>
+
 <% if @participant.webinars.any? %>
-<div class="form-group">
-	<div class="row">
-		<div class="col-sm-8 col-sm-offset-0">  
+<div class="form-group" >
+	<div class="row" >
+		<div class="col-sm-8 col-sm-offset-2" > <hr><hr> 
 		  <%= f.fields_for :participant_webinars do |d| %>
 		  <%= d.hidden_field :participant_id, value: @participant.id %>
-		  <li class="list-group-item"> <%= render 'participants/participantconnected', d: d %></li>
+		  <%= render 'participants/participantconnected', d: d %>
 		  <% end %>
 		</div>
 	</div>

@@ -5,6 +5,9 @@ class Webinar < ApplicationRecord
     def ascherip
       where('participant.ascherip = ?', true)
     end
+    def connected
+      where('participant_webinars.connected = ?', true)
+    end
   end  
     
     has_many :speaker_webinars
