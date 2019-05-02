@@ -10,8 +10,8 @@ class Participant < ApplicationRecord
 	scope :ascherip, -> { where(ascherip: true) }
 
 def self.import(file)
-	CSV.foreach(file.path, headers: true) do |row|
-		Participant.create! row.to_hash
+	CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
+		Participant.find_or_create_by row.to_hash
 	end
 end
 
