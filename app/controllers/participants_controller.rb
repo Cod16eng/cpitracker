@@ -3,7 +3,7 @@ class ParticipantsController < ApplicationController
 
   def index
     
-    @participants = Participant.paginate(page: params[:page], per_page: 10).order('last_name ASC')
+    @participants = Participant.search(params[:search]).paginate(page: params[:page], per_page: 10).order('last_name ASC')
 
   end
 

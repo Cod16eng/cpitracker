@@ -15,4 +15,13 @@ def self.import(file)
 	end
 end
 
+def self.search(search)
+	participants = all
+  if search
+    where('first_name ILIKE ? OR last_name ILIKE ? OR qualification ILIKE ?',"%#{search}%", "%#{search}%", "%#{search}%")
+  else
+    all
+  end
+end
+
 end
