@@ -1,6 +1,6 @@
 class Participant < ApplicationRecord
 
-	has_many :participant_webinars, dependent: :nullify
+	has_many :participant_webinars
 	has_many :webinars, through: :participant_webinars	
 	accepts_nested_attributes_for :participant_webinars, allow_destroy: true 
 

@@ -1,6 +1,6 @@
 class Webinar < ApplicationRecord
 
-	has_many :participant_webinars, dependent: :destroy
+	has_many :participant_webinars
 	has_many :participants, through: :participant_webinars do
     def ascherip
       where('participant.ascherip = ?', true)
