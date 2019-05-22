@@ -28,11 +28,8 @@ class ParticipantsController < ApplicationController
     
   end
 
-  def update
-   
-    
-    if @participant.update_attributes(participant_params)
-      @participant.reload
+  def update    
+    if @participant.update_attributes(participant_params)    
       
       flash[:success] = "Participant Updated"
       redirect_to participant_path(@participant)
