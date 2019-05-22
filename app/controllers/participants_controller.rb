@@ -32,6 +32,7 @@ class ParticipantsController < ApplicationController
    
     
     if @participant.update_attributes(participant_params)
+      @participant.reload
       
       flash[:success] = "Participant Updated"
       redirect_to participant_path(@participant)
@@ -62,6 +63,6 @@ class ParticipantsController < ApplicationController
 
   def participant_params
     params.require(:participant).permit(:first_name, :last_name, 
-      :email, :qualification, :city, :ascherip, :file, webinar_ids: [], participant_webinars_attributes: [:id, :connected, :_destroy])
+      :email, :qualification, :city, :ascherip, :file, webinar_ids: [], participant_webinars_attributes: [:id, :connected, :participant_id, :webinar_id, :_destroy])
   end
 end
