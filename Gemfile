@@ -34,7 +34,11 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 gem 'will_paginate-bootstrap'
-
+gem 'fullcalendar-rails', '~> 3.9'
+gem 'momentjs-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

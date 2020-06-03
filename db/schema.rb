@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190426143008) do
+ActiveRecord::Schema.define(version: 20200602122259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,26 @@ ActiveRecord::Schema.define(version: 20190426143008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "ascherip", default: false
+  end
+
+  create_table "researches", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.string "status"
+    t.string "docs"
+    t.string "research"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "edit_by"
+  end
+
+  create_table "ricerches", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "titolo"
+    t.string "stato"
+    t.string "doc_upload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "speaker_webinars", force: :cascade do |t|
@@ -65,11 +85,12 @@ ActiveRecord::Schema.define(version: 20190426143008) do
 
   create_table "webinars", force: :cascade do |t|
     t.string "name"
-    t.date "date"
+    t.datetime "date"
     t.string "relatore"
     t.text "programa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
 end

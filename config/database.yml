@@ -15,6 +15,7 @@
 # gem 'pg'
 #
 default: &default
+  host: localhost
   adapter: postgresql
   encoding: unicode
   username: postgres
@@ -28,7 +29,7 @@ development:
   username: postgres
   password: Codrin31
   database: cpitracker_development
-  
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

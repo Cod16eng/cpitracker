@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h1 align="center">Editing Research</h1>
+    <%= render 'form', research: @research %>
+  </div>
+  <div align="center" class="col-sm-6">
+    <%= link_to 'Back', researches_path, class: "btn btn-default" %>
+  </div>
+  <div align="center" class="col-sm-6">
+    <%= link_to 'Show', @research, class: "btn btn-info" %>
+  </div>
+  <div class="col-sm-12">
+    <p><br><br></p>
+  </div>
+</div>

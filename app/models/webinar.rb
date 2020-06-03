@@ -1,5 +1,5 @@
 class Webinar < ApplicationRecord
-
+belongs_to :user
 	has_many :participant_webinars
 	has_many :participants, through: :participant_webinars do
     def ascherip
@@ -8,8 +8,8 @@ class Webinar < ApplicationRecord
     def connected
       where('participant_webinars.connected = ?', true)
     end
-  end  
-    
+  end
+
   has_many :speaker_webinars
 	has_many :speakers, through: :speaker_webinars
 
