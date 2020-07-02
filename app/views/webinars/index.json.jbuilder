@@ -5,6 +5,7 @@ json.array!(@webinars) do |webinar|
   json.end webinar.date
   json.url webinar_url(webinar, format: :html)
   json.desc webinar.programa
-  json.user webinar.user['email']
+  json.user webinar.user
+  json.speakers webinar.speakers.map(&:full_name)
   json.created_at webinar.user['created_at']
 end

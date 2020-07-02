@@ -4,22 +4,22 @@
   <%= will_paginate @speaker, renderer: BootstrapPagination::Rails %>
 </div>
 
-<div class="row">	
+<div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<% @speakers.each do |speaker| %>
 		  <div align="center" class="well">
-			<h3 align="center"><%= speaker.qualification %> <%= speaker.first_name %> <%= speaker.last_name %></h3>
-				<ul class="list-group">										
+			<h3 align="center"> <%= speaker.first_name %> <%= speaker.last_name %><br><%= speaker.qualification %></h3>
+				<ul class="list-group">
 					<li  class="list-group-item">Email: <%= mail_to speaker.email %> - City: <%= speaker.city %></li>
-					<li class="list-group-item"><%= link_to "View this relatore", speaker_path(speaker), class: "btn btn-xs btn-success" %></li>			
+					<li class="list-group-item"><%= link_to "View this relatore", speaker_path(speaker), class: "btn btn-xs btn-success" %></li>
 				</ul>
-			<div align="center"><br>			
-						
+			<div align="center"><br>
+
 			</div>
 		  </div>
 		<% end %>
 	</div>
-	
+
 </div>
 
 <div align="center" >

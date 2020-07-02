@@ -4,7 +4,7 @@ class WebinarsController < ApplicationController
   def index
 
     @webinars = Webinar.paginate(page: params[:page], per_page: 10).order('date DESC')
-
+    
   end
 
   def new
@@ -30,7 +30,7 @@ class WebinarsController < ApplicationController
 
   def update
     if @webinar.update(webinar_params)
-      
+
       flash[:success] = "Webinar Updated"
       redirect_to webinar_path(@webinar)
     else

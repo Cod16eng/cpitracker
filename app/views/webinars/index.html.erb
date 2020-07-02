@@ -4,20 +4,20 @@
   <%= will_paginate @webinar, renderer: BootstrapPagination::Rails %>
 </div>
 
-<div class="row">	
+<div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<% @webinars.each do |webinar| %>
 		  <div class="well">
 			<h3 align="center"><%= webinar.name %></h3>
-				<ul class="list-group">					
-					<li  class="list-group-item">Date: <%= webinar.date %></li>
+				<ul class="list-group">
+					<li  class="list-group-item">Date: <%= webinar.date.strftime("%d-%b-%Y at %H:%M") %></li>
 					<% if webinar.speakers.any? %>
 						<li  class="list-group-item"><%= render webinar.speakers %></li>
 					<% end %>
-								
+
 				</ul>
-			<div align="center"><br>			
-			<%= link_to "View this Webinar", webinar_path(webinar), class: "btn btn-xs btn-success" %>			
+			<div align="center"><br>
+			<%= link_to "View this Webinar", webinar_path(webinar), class: "btn btn-xs btn-success" %>
 			</div>
 		  </div>
 		<% end %>
@@ -27,5 +27,3 @@
 <div align="center" >
   <%= will_paginate @webinar, renderer: BootstrapPagination::Rails %>
 </div>
-		
-

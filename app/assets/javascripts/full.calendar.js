@@ -18,9 +18,13 @@ function eventCalendar() {
     timeFormat: 'H(:mm)',
     eventRender: function(event, element)
 {
-    element.find('.fc-title').append("<br/> by: " + event.user);
+    element.find('.fc-title').append("<br/> by: " + event.speakers);
     element.find('.fc-time').append("<br/>");
-    
+    if (event.title.includes("WEBCAST") || event.title.includes("Webcast")) {
+      element.css('background-color', '#00cc44')
+      element.css('border-color', '#00cc44')
+    }
+
 }
   });
 };

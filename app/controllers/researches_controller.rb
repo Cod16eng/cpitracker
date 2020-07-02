@@ -4,7 +4,7 @@ class ResearchesController < ApplicationController
   # GET /researches
   # GET /researches.json
   def index
-    @researches = Research.all
+    @researches = Research.search(params[:search]).paginate(page: params[:page], per_page: 10).order('created_at DESC')
 
   end
 

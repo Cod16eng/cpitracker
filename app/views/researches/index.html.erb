@@ -1,7 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-4 col-md-offset-8">
+	<div class="row">
+<form class="navbar-form navbar-right">
+    <%= form_tag researches_path, method: :get do %>
+        <div class='form-group'>
+            <%= text_field_tag :search, params[:search], class: "form-control ", placeholder: "Search Research" %>
+            <%= submit_tag 'Search', name: nil, class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</form>
+</div>
+</div>
 
-<h1>Researches</h1>
-
+<h1 align="center">Researches <span class="badge badge-default"><%= pluralize(@researches.count, "research")  %></h1><br><br> <div class=""><%= link_to  "Add Research", new_research_path, class: "btn btn-success btn-sm pull-right"%>
+</div>
+<div class="clearfix">
+<br>
+</div><br>
+<div align="center" >
+  <%= will_paginate @research, renderer: BootstrapPagination::Rails %>
+</div>
+<br><br>
 <table class="table">
   <thead>
     <tr>
@@ -29,7 +47,7 @@
     <% end %>
   </tbody>
 </table>
-
+<div align="center" >
+  <%= will_paginate @research, renderer: BootstrapPagination::Rails %>
+</div>
 <br>
-
-<%= link_to 'New Research', new_research_path %>
