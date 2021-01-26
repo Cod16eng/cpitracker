@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 20200602122259) do
     t.string "edit_by"
   end
 
-  create_table "ricerches", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "titolo"
-    t.string "stato"
-    t.string "doc_upload"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "speaker_webinars", force: :cascade do |t|
     t.integer "webinar_id"
     t.integer "speaker_id"

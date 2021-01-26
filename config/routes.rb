@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :participants do
   	collection { post :import }
   end
+
+  resources :participantwebinars do
+    collection { post :upload }
+  end
   get 'calendar', to: 'webinars#calendar'
   devise_for :users
 
