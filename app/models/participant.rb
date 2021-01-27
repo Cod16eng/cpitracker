@@ -1,8 +1,8 @@
 class Participant < ApplicationRecord
-
+before_save { |participant| participant.email = participant.email.downcase }
 	has_many :participant_webinars
-	has_many :webinars, through: :participant_webinars	
-	accepts_nested_attributes_for :participant_webinars, allow_destroy: true 
+	has_many :webinars, through: :participant_webinars
+	accepts_nested_attributes_for :participant_webinars, allow_destroy: true
 
 	validates :email, presence: true, uniqueness: {case_sensitive: false}
 
@@ -17,7 +17,7 @@ end
 def self.search(search)
 	participants = all
   if search
-    where('first_name ILIKE ? OR last_name ILIKE ? OR qualification ILIKE ?',"%#{search}%", "%#{search}%", "%#{search}%")
+    where('first_name ILIKE ? OR last_name ILIKE ? OR qualification ILIKE ? OR email ILIKE ?',"%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   else
     all
   end

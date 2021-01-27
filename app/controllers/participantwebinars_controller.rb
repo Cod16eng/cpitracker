@@ -4,11 +4,11 @@ class ParticipantwebinarsController < ApplicationController
   end
 
   def upload
-    if ParticipantWebinar.upload(params[:file])
-      flash[:success] = "Data uploaded"
+    if ParticipantWebinar.upload(params[:file]) == false
+      flash[:danger] = "Please check the csv data is incorect or uploded again"
       redirect_to participantwebinars_path
     else
-      flash[:danger] = "Please check the csv data is incorect or uploded again"
+      flash[:success] = "Data uploaded"
       redirect_to participantwebinars_path
     end
   end
