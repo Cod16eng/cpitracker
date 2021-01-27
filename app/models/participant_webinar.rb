@@ -7,7 +7,7 @@ class ParticipantWebinar < ApplicationRecord
     validates :webinar_id, :participant_id, presence: true
 
 		def self.upload(file)
-			CSV.foreach(file.path, headers: true) do |row|
+			CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
 			participant = Participant.find_by_email(row['email'])
 			webinar = Webinar.find_by_name(row['webinar'])
 			connected_yn =  row['connected'] == 'yes' ? true : false
