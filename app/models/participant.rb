@@ -1,6 +1,6 @@
 class Participant < ApplicationRecord
 before_save { |participant| participant.email = participant.email.downcase }
-	has_many :participant_webinars
+	has_many :participant_webinars, :dependent => :destroy
 	has_many :webinars, through: :participant_webinars
 	accepts_nested_attributes_for :participant_webinars, allow_destroy: true
 

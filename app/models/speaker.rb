@@ -1,5 +1,5 @@
 class Speaker < ApplicationRecord
-  has_many :speaker_webinars
+  has_many :speaker_webinars, :dependent => :destroy
   has_many :webinars, through: :speaker_webinars
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
