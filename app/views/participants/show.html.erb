@@ -1,17 +1,51 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#myTab2 li:eq(0) a").tab('show');
+});
+</script>
+<style type="text/css">
+	.bs-example{
+		margin: 20px;
+	}
+</style>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="well">
 			<h1 align="center"><%=  @participant.first_name %> <%= @participant.last_name %></h1>
-				<ul class="list-group">					
+				<ul class="list-group">
 					<li class="list-group-item">Title: <%= @participant.qualification %></li>
 					<li class="list-group-item">Email: <%= mail_to @participant.email %></li>
-					<li class="list-group-item">City: <%= @participant.city %></li>		
+					<li class="list-group-item">City: <%= @participant.city %></li>
 				</ul>
-				<% if @participant.webinars.any? %>
-				<p style="float: right"><span class="label label-info" ><%= pluralize(@participant.webinars.count, "webinar")  %></p>
-		         <p>Webinars: <%= render @participant.webinars %></p>
-		        <% end %>
-				
+				<ul class="nav nav-tabs nav-justified" id="myTab2">
+				  <li role="presentation"><a data-toggle="tab" href="#allParticipants">All Webinars - <span class="badge"> <%= @participant.webinars.count  %></span></a></li>
+				  <li role="presentation"><a data-toggle="tab" href="#connected">Connected - <span class="badge"> <%=ParticipantWebinar.where(connected: true, participant_id: @participant).count %></span></a></li>
+				  <li role="presentation"><a data-toggle="tab" href="#notConnected">Not connected - <span class="badge"> <%=ParticipantWebinar.where(connected: false, participant_id: @participant).count %></span></a></li>
+
+				</ul>
+				<div class="tab-content">
+	        	  <div id="allParticipants" class="tab-pane fade in active"><br>
+								<% if @participant.webinars.any? %>
+						         <%= render @participant.webinars.order(date: 'DESC') %>
+						     <% end %>
+		          </div>
+		          <div id="connected" class="tab-pane fade in active"><br>
+								<% if @participant.webinars.any? %>
+									<% ParticipantWebinar.where(connected: true, participant_id: @participant).order(date: 'DESC').find_each do |participantw| %>
+										<li class="list-group-item"><%=  participantw.webinar.name %></li>
+									<% end %>
+							 <% end %>
+		          </div>
+		          <div id="notConnected" class="tab-pane fade in active"><br>
+								<% if @participant.webinars.any? %>
+									<% ParticipantWebinar.where(connected: false, participant_id: @participant).order(date: 'DESC').find_each do |participantw| %>
+										<li class="list-group-item"><%=  participantw.webinar.name %></li>
+									<% end %>
+							 <% end %>
+		          </div>
+		        </div>
+
+
 			<div align="center"><br>
 			<%= link_to "Edit this participant", edit_participant_path(@participant), class: "btn btn-xs btn-success" %>
 			<%= link_to "Delete this participant", participant_path(@participant), method: :delete, data:{confirm: "Are you sure"}, class: "btn btn-xs btn-danger" %>

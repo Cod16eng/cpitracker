@@ -267,4 +267,4 @@ DEPENDENCIES
   will_paginate-bootstrap (~> 1.0, >= 1.0.1)
 
 BUNDLED WITH
-   1.15.3
+   2.2.13

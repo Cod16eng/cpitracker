@@ -8,6 +8,9 @@ belongs_to :user
     def connected
       where('participant_webinars.connected = ?', true)
     end
+		def notconnected
+      where('participant_webinars.connected = ?', false)
+    end
   end
 
   has_many :speaker_webinars

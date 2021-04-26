@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function(){ 
+$(document).ready(function(){
     $("#myTab li:eq(0) a").tab('show');
 });
 </script>
@@ -13,12 +13,12 @@ $(document).ready(function(){
 	<div class="col-md-10 col-md-offset-1">
 		<div class="well">
 			<h1 align="center"><%= @webinar.name %></h1>
-				<ul class="list-group">					
+				<ul class="list-group">
 					<li class="list-group-item">Date: <%= @webinar.date %></li>
 					<% if @webinar.speakers.any? %>
 						<li  class="list-group-item"><%= render @webinar.speakers %></li>
 					<% end %>
-					<li class="list-group-item">Programma: <%= @webinar.programa %></li>		
+					<li class="list-group-item">Programma: <%= @webinar.programa %></li>
 				</ul>
 			<div align="center"><br>
 			<%= link_to "Edit this Webinar", edit_webinar_path(@webinar), class: "btn btn-xs btn-success" %>
@@ -26,10 +26,10 @@ $(document).ready(function(){
 			<%= link_to "Back to Webinars", webinars_path, class: "btn btn-xs btn-primary" %>
 			</div><br>
 			<ul class="nav nav-tabs nav-justified" id="myTab">
-			  <li role="presentation"><a data-toggle="tab" href="#allParticipants">All Participants</a></li>
-			  <li role="presentation"><a data-toggle="tab" href="#connected">Connected</a></li>
-			  <li role="presentation"><a data-toggle="tab" href="#notConnected">Not connected</a></li>
-			  <li role="presentation"><a data-toggle="tab" href="#ascheriP">Ascheri & Partners</a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#allParticipants">All Participants - <span class="badge"> <%= @webinar.participants.count  %></span></a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#connected">Connected - <span class="badge"> <%= @webinar.participants.connected.count  %></span></a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#notConnected">Not connected - <span class="badge"> <%= @webinar.participants.notconnected.count  %></span></a></li>
+			  <li role="presentation"><a data-toggle="tab" href="#ascheriP">Ascheri & Partners - <span class="badge"> <%= @webinar.participants.where(ascherip: true).count  %></span></a></li>
 			</ul>
 			<div class="tab-content">
         	  <div id="allParticipants" class="tab-pane fade in active"><br>
@@ -44,18 +44,18 @@ $(document).ready(function(){
 			    <% end %>
 	          </div>
 	          <div id="notConnected" class="tab-pane fade in active">
-	            <% if @webinar.participants.any? %>				
+	            <% if @webinar.participants.any? %>
 			        <p><%= render 'participants/notconnected' %></p>
 			    <% end %>
 	          </div>
 	          <div id="ascheriP" class="tab-pane fade in active"><br>
-	            <% if @webinar.participants.connected.any? %>      
+	            <% if @webinar.participants.connected.any? %>
                   <p><%= render 'participants/ascherip' %></p>
                 <% end %>
 	          </div>
 	        </div>
 
-			
+
 		</div>
 	</div>
 </div>
