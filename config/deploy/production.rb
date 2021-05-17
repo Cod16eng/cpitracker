@@ -1,13 +1,4 @@
-set :application, "cpitracker"
-set :repo_url, "git@github.com:Cod16eng/cpitracker.git"
 
-# Deploy to the user's home directory
-set :deploy_to, "/home/deploy/#{fetch :application}"
-
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-
-# Only keep the last 5 releases to save disk space
-set :keep_releases, 5
 
 # Optionally, you can symlink your database.yml and/or secrets.yml file from the shared directory during deploy
 # This is useful if you don't want to use ENV variables
@@ -16,7 +7,7 @@ set :keep_releases, 5
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-
+server 'http://178.62.121.120/', user: 'deploy', roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
